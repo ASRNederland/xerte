@@ -1,4 +1,4 @@
-FROM alpine as builder
+FROM alpine:3.8 as builder
 RUN apk update && apk upgrade && \
     apk add --no-cache git && \
     git clone --quiet https://github.com/thexerteproject/xerteonlinetoolkits.git /tmp/thexerteproject && \
