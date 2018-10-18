@@ -4,5 +4,8 @@ RUN apk update && apk upgrade && \
     git clone https://github.com/thexerteproject/xerteonlinetoolkits.git /tmp/thexerteproject && \
     rm -rf /tmp/thexerteproject/.git
 
-FROM php:7.2-apache-stretch 
+FROM php:7.2-apache-stretch
+RUN apt-get update && \
+    apt-get install -y mysql-client && \
+    docker-php-ext-install pdo_mysql
 COPY --from=builder /tmp/thexerteproject/ /var/www/html/
