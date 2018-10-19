@@ -8,5 +8,4 @@ FROM php:7-apache
 COPY --from=builder /thexerteproject /var/www/html
 RUN chown -R www-data:www-data /var/www/html && \
     docker-php-ext-install pdo_mysql && \
-    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
     docker-php-ext-install ldap
