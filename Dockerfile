@@ -8,7 +8,7 @@ FROM php:7-apache
 COPY --from=builder /thexerteproject /var/www/html
 RUN chown -R www-data:www-data /var/www/html && \
     docker-php-ext-install pdo_mysql && \
-    apk add --no-cache --virtual .build-deps $PHPIZE_DEPS icu-dev openldap-dev && \
-    docker-php-ext-install ldap  && \
-    docker-php-ext-enable ldap && \
-    apk del .build-deps
+    apt-get update -yqq && \
+    apt-get install -y libldap2-dev && \
+    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
+    docker-php-ext-install ldap \
