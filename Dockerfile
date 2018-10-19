@@ -12,4 +12,5 @@ RUN chown -R www-data:www-data /var/www/html && \
     apt-get install -y libldap2-dev && \
     rm -rf /var/lib/apt/lists/* && \
     docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
-    docker-php-ext-install ldap
+    docker-php-ext-install ldap && \
+    apt-get purge -y --auto-remove libldap2-dev
