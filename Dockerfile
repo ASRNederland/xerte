@@ -6,4 +6,5 @@ RUN apk update && apk upgrade && \
 
 FROM php:7-apache
 COPY --from=builder /thexerteproject /var/www/html
-RUN docker-php-ext-install pdo_mysql
+RUN chown -R www-data:www-data /var/www/html && \
+    docker-php-ext-install pdo_mysql
