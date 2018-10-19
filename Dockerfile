@@ -5,5 +5,5 @@ RUN apk update && apk upgrade && \
     rm -rf /tmp/thexerteproject/.git
 
 FROM php:7-apache
-COPY --from=builder /thexerteproject/ /var/www/html/
+COPY --from=builder /thexerteproject /var/www/html
 RUN docker-php-ext-install pdo_mysql
