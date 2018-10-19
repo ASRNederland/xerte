@@ -10,5 +10,6 @@ RUN chown -R www-data:www-data /var/www/html && \
     docker-php-ext-install pdo_mysql && \
     apt-get update -yqq && \
     apt-get install -y libldap2-dev && \
+    rm -rf /var/lib/apt/lists/* && \
     docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
-    docker-php-ext-install ldap \
+    docker-php-ext-install ldap
